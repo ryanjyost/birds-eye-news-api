@@ -10,10 +10,7 @@ const recordSchema = new mongoose.Schema({
   content: {
     links: Array
   },
-  image: {
-    url: String,
-    secure_url: String
-  },
+  image: String,
   created_at: { type: Date, default: new Date() },
   uploaded_at: String
 });

@@ -89,24 +89,24 @@ module.exports = [
       }
     ]
   },
-  {
-    name: "thenewyorker",
-    url: "https://www.newyorker.com/",
-    file: "thenewyorker",
-    title: "The New Yorker",
-    rss: [
-      {
-        category: "politics",
-        type: "rss",
-        url: "https://www.newyorker.com/feed/news/news-desk"
-      },
-      {
-        category: "opinion",
-        type: "rss",
-        url: "https://www.newyorker.com/feed/news/daily-comment"
-      }
-    ]
-  },
+  // {
+  //   name: "thenewyorker",
+  //   url: "https://www.newyorker.com/",
+  //   file: "thenewyorker",
+  //   title: "The New Yorker",
+  //   rss: [
+  //     {
+  //       category: "politics",
+  //       type: "rss",
+  //       url: "https://www.newyorker.com/feed/news/news-desk"
+  //     },
+  //     {
+  //       category: "opinion",
+  //       type: "rss",
+  //       url: "https://www.newyorker.com/feed/news/daily-comment"
+  //     }
+  //   ]
+  // },
   {
     name: "huffpo",
     url: "https://www.huffingtonpost.com/",
@@ -262,23 +262,23 @@ module.exports = [
       }
     ]
   },
-  {
-    name: "time",
-    url: "http://time.com/",
-    title: "Time",
-    rss: [
-      {
-        category: "politics",
-        type: "rss",
-        url: "http://feeds.feedburner.com/timeblogs/swampland"
-      },
-      {
-        category: "opinion",
-        type: "rss",
-        url: "http://feeds.feedburner.com/time/ideas"
-      }
-    ]
-  },
+  // {
+  //   name: "time",
+  //   url: "http://time.com/",
+  //   title: "Time",
+  //   rss: [
+  //     {
+  //       category: "politics",
+  //       type: "rss",
+  //       url: "http://feeds.feedburner.com/timeblogs/swampland"
+  //     },
+  //     {
+  //       category: "opinion",
+  //       type: "rss",
+  //       url: "http://feeds.feedburner.com/time/ideas"
+  //     }
+  //   ]
+  // },
   {
     name: "nationalreview",
     url: "https://www.nationalreview.com/",
@@ -344,18 +344,18 @@ module.exports = [
       }
     ]
   },
-  {
-    name: "slate",
-    url: "https://slate.com/",
-    title: "Slate Magazine",
-    rss: [
-      {
-        category: "opinion",
-        type: "rss",
-        url: "http://feeds.slate.com/slate-101526"
-      }
-    ]
-  },
+  // {
+  //   name: "slate",
+  //   url: "https://slate.com/",
+  //   title: "Slate Magazine",
+  //   rss: [
+  //     {
+  //       category: "opinion",
+  //       type: "rss",
+  //       url: "http://feeds.slate.com/slate-101526"
+  //     }
+  //   ]
+  // },
   {
     name: "washingtonexaminer",
     url: "https://www.washingtonexaminer.com/",
@@ -373,30 +373,30 @@ module.exports = [
       }
     ]
   },
-  {
-    name: "dailybeast",
-    url: "https://www.thedailybeast.com/",
-    title: "The Daily Best",
-    rss: [
-      {
-        category: "politics",
-        type: "rss",
-        url: "https://feeds.thedailybeast.com/rss/articles"
-      }
-    ]
-  },
-  {
-    name: "federalist",
-    url: "http://thefederalist.com/",
-    title: "The Federalist",
-    rss: [
-      {
-        category: "opinion",
-        type: "rss",
-        url: "http://thefederalist.com/feed/"
-      }
-    ]
-  },
+  // {
+  //   name: "dailybeast",
+  //   url: "https://www.thedailybeast.com/",
+  //   title: "The Daily Best",
+  //   rss: [
+  //     {
+  //       category: "politics",
+  //       type: "rss",
+  //       url: "https://feeds.thedailybeast.com/rss/articles"
+  //     }
+  //   ]
+  // },
+  // {
+  //   name: "federalist",
+  //   url: "http://thefederalist.com/",
+  //   title: "The Federalist",
+  //   rss: [
+  //     {
+  //       category: "opinion",
+  //       type: "rss",
+  //       url: "http://thefederalist.com/feed/"
+  //     }
+  //   ]
+  // },
   {
     name: "newrepublic",
     url: "https://newrepublic.com/",
@@ -409,18 +409,18 @@ module.exports = [
       }
     ]
   },
-  {
-    name: "drudge",
-    url: "http://www.drudgereport.com/",
-    title: "Drudge Report",
-    rss: [
-      {
-        category: "politics",
-        type: "rss",
-        url: "http://feeds.feedburner.com/DrudgeReportFeed"
-      }
-    ]
-  },
+  // {
+  //   name: "drudge",
+  //   url: "http://www.drudgereport.com/",
+  //   title: "Drudge Report",
+  //   rss: [
+  //     {
+  //       category: "politics",
+  //       type: "rss",
+  //       url: "http://feeds.feedburner.com/DrudgeReportFeed"
+  //     }
+  //   ]
+  // },
   {
     name: "newyorkpost",
     url: "https://nypost.com/",
@@ -432,22 +432,22 @@ module.exports = [
         url: "https://nypost.com/news/feed/"
       }
     ]
-  },
-  {
-    name: "dailycaller",
-    url: "http://dailycaller.com/",
-    title: "The Daily Caller",
-    rss: [
-      {
-        category: "politics",
-        type: "rss",
-        url: "http://feeds.feedburner.com/dailycaller"
-      },
-      {
-        category: "opinion",
-        type: "rss",
-        url: "http://feeds.feedburner.com/dailycaller-opinion"
-      }
-    ]
   }
+  // {
+  //   name: "dailycaller",
+  //   url: "http://dailycaller.com/",
+  //   title: "The Daily Caller",
+  //   rss: [
+  //     {
+  //       category: "politics",
+  //       type: "rss",
+  //       url: "http://feeds.feedburner.com/dailycaller"
+  //     },
+  //     {
+  //       category: "opinion",
+  //       type: "rss",
+  //       url: "http://feeds.feedburner.com/dailycaller-opinion"
+  //     }
+  //   ]
+  // }
 ];

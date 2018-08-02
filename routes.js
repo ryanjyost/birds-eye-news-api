@@ -174,17 +174,19 @@ module.exports = [
       let politicsArticles = [];
 
       for (let site of sites) {
-        let params = { siteName: site.name, category: "politics" };
-        let articles = await Article.find(
-          params,
-          {},
-          { sort: { created_at: -1 } },
-          function(err, articles) {
-            return articles;
-          }
-        ).limit(10);
+        if (site.name !== "thehill") {
+          let params = { siteName: site.name, category: "politics" };
+          let articles = await Article.find(
+            params,
+            {},
+            { sort: { created_at: -1 } },
+            function(err, articles) {
+              return articles;
+            }
+          ).limit(10);
 
-        politicsArticles = politicsArticles.concat(articles);
+          politicsArticles = politicsArticles.concat(articles);
+        }
       }
 
       let opinionArticles = [];

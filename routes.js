@@ -174,7 +174,7 @@ module.exports = [
       let politicsArticles = [];
 
       for (let site of sites) {
-        if (site.name !== "thehill") {
+        if (site.name !== "thehill" && site.name !== "politico") {
           let params = { siteName: site.name, category: "politics" };
           let articles = await Article.find(
             params,
@@ -192,7 +192,7 @@ module.exports = [
       let opinionArticles = [];
 
       for (let site of sites) {
-        if (site.name !== "thehill" && site.name !== "cnn") {
+        if (site.name !== "thehill") {
           console.log(site.name);
           let params = { siteName: site.name, category: "opinion" };
           let articles = await Article.find(

@@ -15,6 +15,7 @@
     "gramophone": "0.0.3",
     "hapi": "^17.5.2",
     "lodash": "^4.17.10",
+    "moment": "^2.22.2",
     "mongoose": "^5.1.7",
     "striptags": "^3.1.1"
   }

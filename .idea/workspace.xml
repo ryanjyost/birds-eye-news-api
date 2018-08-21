@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65259d7c-db43-4931-b81f-8ea147bf43d6" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/models/batchOfTags.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,7 +18,7 @@
     <splitter split-orientation="horizontal" split-proportion="0.5573506">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/server.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="340">
@@ -26,19 +27,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="routes.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/routes.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="256">
-                  <caret line="365" column="11" lean-forward="true" selection-start-line="365" selection-start-column="11" selection-end-line="365" selection-end-column="11" />
-                  <folding>
-                    <element signature="e#383#923#0" />
-                    <element signature="e#927#2309#0" />
-                    <element signature="e#2313#2885#0" />
-                    <element signature="e#2889#4699#0" />
-                    <element signature="e#4704#7022#0" />
-                    <element signature="e#7157#9604#0" />
-                  </folding>
+                <state relative-caret-position="1073">
+                  <caret line="384" column="48" selection-start-line="384" selection-start-column="48" selection-end-line="384" selection-end-column="48" />
                 </state>
               </provider>
             </entry>
@@ -78,7 +71,7 @@
             <entry file="file://$PROJECT_DIR$/sites.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="458">
-                  <caret line="228" column="10" lean-forward="true" selection-start-line="228" selection-start-column="10" selection-end-line="228" selection-end-column="10" />
+                  <caret line="231" column="14" selection-start-line="231" selection-start-column="14" selection-end-line="231" selection-end-column="14" />
                   <folding>
                     <element signature="e#8887#9129#0" />
                   </folding>
@@ -135,10 +128,10 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="22" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="23" />
     <option name="width" value="1280" />
-    <option name="height" value="778" />
+    <option name="height" value="777" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -220,6 +213,8 @@
       <workItem from="1533859351041" duration="664000" />
       <workItem from="1533866684692" duration="1728000" />
       <workItem from="1534207602662" duration="5517000" />
+      <workItem from="1534529429103" duration="1767000" />
+      <workItem from="1534807261201" duration="1238000" />
     </task>
     <task id="LOCAL-00001" summary="add some sites">
       <created>1533867196177</created>
@@ -232,10 +227,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43640000" />
+    <option name="totallyTimeSpent" value="46645000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1280" height="778" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="777" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -244,8 +239,8 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32932332" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.2290749" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16720517" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.22794117" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.1720517" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -272,7 +267,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -595,23 +590,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="7" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sites.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="228" column="10" lean-forward="true" selection-start-line="228" selection-start-column="10" selection-end-line="228" selection-end-column="10" />
-          <folding>
-            <element signature="e#8887#9129#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/batchOfTags.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -619,18 +597,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sites.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="231" column="14" selection-start-line="231" selection-start-column="14" selection-end-line="231" selection-end-column="14" />
+          <folding>
+            <element signature="e#8887#9129#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="365" column="11" lean-forward="true" selection-start-line="365" selection-start-column="11" selection-end-line="365" selection-end-column="11" />
-          <folding>
-            <element signature="e#383#923#0" />
-            <element signature="e#927#2309#0" />
-            <element signature="e#2313#2885#0" />
-            <element signature="e#2889#4699#0" />
-            <element signature="e#4704#7022#0" />
-            <element signature="e#7157#9604#0" />
-          </folding>
+        <state relative-caret-position="1073">
+          <caret line="384" column="48" selection-start-line="384" selection-start-column="48" selection-end-line="384" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="17" column="7" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
         </state>
       </provider>
     </entry>

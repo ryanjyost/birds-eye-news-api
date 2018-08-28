@@ -396,5 +396,41 @@ module.exports = [
 
       return { batches: sorted, topTags };
     }
+  },
+  {
+    method: "GET",
+    path: "/articles",
+    handler: async function(request, h) {
+      let param = {
+        created_at: {
+          $gte: Date.parse(request.query.start),
+          $lt: Date.parse(request.query.end)
+        }
+      };
+      let articles = await Article.find(param, function(err, articles) {
+        return articles;
+      }).limit(100);
+
+      return { articles };
+    }
+  },
+
+  {
+    method: "GET",
+    path: "/search_front_pages",
+    handler: async function(request, h) {
+      // BATCH
+      const batches = await Batch.find(
+        { "records.1": { $exists: true } }, //make sure there's records in the batch
+        {},
+        { sort: { created_at: -1 } },
+
+        function(err, batch) {
+          return batch;
+        }
+      ).limit(100);
+
+      return { batches, sites };
+    }
   }
 ];

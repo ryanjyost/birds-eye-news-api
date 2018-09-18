@@ -19,6 +19,7 @@
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
     "mongoose": "^5.1.7",
+    "request": "^2.88.0",
     "shuffle-array": "^1.0.1",
     "simple-statistics": "^6.1.0",
     "striptags": "^3.1.1",

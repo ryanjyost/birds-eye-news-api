@@ -10,6 +10,8 @@ const gramophone = require("gramophone");
 const nlp = require("compromise");
 const moment = require("moment");
 const getSingleSource = require("./lib/getSingleSource");
+const chyrons = require("./lib/chyrons");
+const topNews = require("./lib/topNews");
 
 module.exports = [
   /*======================
@@ -257,6 +259,31 @@ module.exports = [
       // if (data) {
       //   return { ...source, ...data };
       // }
+    }
+  },
+
+  /*======================
+* Chyrons
+* */
+  {
+    method: "GET",
+    path: `/chyrons/{hours}`,
+    handler: async function(request, h) {
+      const data = chyrons(request.params.hours);
+      if (data) {
+        return data;
+      }
+    }
+  },
+
+  /*======================
+* Chyrons
+* */
+  {
+    method: "GET",
+    path: `/top_news`,
+    handler: async function(request, h) {
+      return await topNews();
     }
   }
 ];

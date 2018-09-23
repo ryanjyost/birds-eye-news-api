@@ -7,7 +7,7 @@ const start = async () => {
 
   const redisClient = redis.createClient({
     host: process.env.REDISCLOUD_URL || "localhost",
-    port: 6379,
+    port: process.env.REDISCLOUD_URL ? null : 6379,
     no_ready_check: true
   });
 

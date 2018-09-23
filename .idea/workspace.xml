@@ -17,8 +17,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="13" column="63" lean-forward="true" selection-start-line="13" selection-start-column="63" selection-end-line="13" selection-end-column="63" />
+            <state relative-caret-position="360">
+              <caret line="18" column="65" lean-forward="true" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -78,9 +78,11 @@
       <find>console.</find>
       <find>http://localho</find>
       <find>request</find>
+      <find>http://localhost:8000</find>
     </findStrings>
     <replaceStrings>
       <replace>source</replace>
+      <replace>https://newsbie-api-staging.herokuapp.com/</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -245,7 +247,7 @@
       <workItem from="1536702208291" duration="22542000" />
       <workItem from="1537146820795" duration="10958000" />
       <workItem from="1537671875204" duration="1640000" />
-      <workItem from="1537719233877" duration="1663000" />
+      <workItem from="1537719233877" duration="2786000" />
     </task>
     <task id="LOCAL-00001" summary="add some sites">
       <created>1533867196177</created>
@@ -275,11 +277,25 @@
       <option name="project" value="LOCAL" />
       <updated>1537720781835</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="deploying">
+      <created>1537721109226</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1537721109226</updated>
+    </task>
+    <task id="LOCAL-00006" summary="deploying">
+      <created>1537721890427</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1537721890427</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="169104000" />
+    <option name="totallyTimeSpent" value="170227000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="777" extended-state="6" />
@@ -338,7 +354,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add some sites" />
     <MESSAGE value="remove" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove" />
+    <MESSAGE value="deploying" />
+    <option name="LAST_COMMIT_MESSAGE" value="deploying" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -950,8 +967,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="13" column="63" lean-forward="true" selection-start-line="13" selection-start-column="63" selection-end-line="13" selection-end-column="63" />
+        <state relative-caret-position="360">
+          <caret line="18" column="65" lean-forward="true" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="65" />
         </state>
       </provider>
     </entry>

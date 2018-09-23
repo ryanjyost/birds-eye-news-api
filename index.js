@@ -1,15 +1,25 @@
 const createServer = require("./server");
 const { promisify } = require("util");
 const redis = require("redis");
+const url = require("url");
 
 const start = async () => {
   const server = await createServer();
 
+  let redisURL = "localhost",
+    redisPort = 6379;
+  if (process.env.REDISCLOUD_URL) {
+    let parsedURL = url.parse(process.env.REDISCLOUD_URL);
+    redisURL = parsedURL.hostname;
+    redisPort = parsedURL.port;
+  }
   const redisClient = redis.createClient({
-    host: process.env.REDISCLOUD_URL || "localhost",
-    port: 6379,
+    host: redisURL,
+    port: redisPort,
     no_ready_check: true
   });
+
+  redisClient.auth(process.env.REDIS_PASSWORD);
 
   // redisClient.lpushAsync = promisify(redisClient.lpush).bind(redisClient);
   // redisClient.lrangeAsync = promisify(redisClient.lrange).bind(redisClient);

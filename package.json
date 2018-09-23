@@ -5,20 +5,25 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
+    "boom": "^7.2.0",
+    "camelcase": "^5.0.0",
+    "catbox-redis": "^4.2.2",
     "compromise": "^11.11.0",
     "csvtojson": "^2.0.8",
     "gramophone": "0.0.3",
     "hapi": "^17.5.2",
+    "hoek": "^5.0.4",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
     "mongoose": "^5.1.7",
+    "redis": "^2.8.0",
     "shuffle-array": "^1.0.1",
     "simple-statistics": "^6.1.0",
     "striptags": "^3.1.1",

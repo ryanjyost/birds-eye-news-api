@@ -8,10 +8,32 @@ const _ = require("lodash");
 const striptags = require("striptags");
 const gramophone = require("gramophone");
 const nlp = require("compromise");
-const moment = require("moment");
 const getSingleSource = require("./lib/getSingleSource");
 const chyrons = require("./lib/chyrons");
 const topNews = require("./lib/topNews");
+const Boom = require("boom");
+const camelCase = require("camelcase");
+
+const handleRequest = async (request, args) => {
+  let { redis } = request.server.app;
+  let key = request.route.path.replace("/", "_");
+  if (key.indexOf("/") > -1) {
+    key = key.slice(0, key.indexOf("/"));
+  }
+
+  try {
+    let data = await redis.get(key);
+    if (data) {
+      return JSON.parse(data);
+    } else {
+      data = await request.server.methods[camelCase(key)].apply(this, args);
+      redis.set(key, JSON.stringify(data), "EX", 60 * 15);
+      return data;
+    }
+  } catch (e) {
+    return Boom.badImplementation(e);
+  }
+};
 
 module.exports = [
   /*======================
@@ -21,122 +43,7 @@ module.exports = [
     method: "GET",
     path: "/get_front_pages",
     handler: async function(request, h) {
-      // BATCH
-      const batch = await Batch.findOne(
-        { "records.1": { $exists: true } }, //make sure there's records in the batch
-        {},
-        { sort: { created_at: -1 } },
-
-        function(err, batch) {
-          return batch;
-        }
-      );
-
-      const recordParams = { batch: Number(batch.id) };
-      const records = await Record.find(recordParams, function(err, records) {
-        return records;
-      });
-
-      return { records, batch };
-    }
-  },
-
-  /*======================
-	* TODAY
-	* */
-  {
-    method: "GET",
-    path: "/today",
-    handler: async function(request, h) {
-      let politicsArticles = [];
-
-      for (let site of sites) {
-        let hasPolitics = site.rss.find(feed => {
-          return feed.category === "politics";
-        });
-        if (hasPolitics) {
-          let params = { siteName: site.name, category: "politics" };
-          let articles = await Article.find(
-            params,
-            {},
-            { sort: { created_at: -1 } },
-            function(err, articles) {
-              return articles;
-            }
-          ).limit(10);
-
-          politicsArticles = politicsArticles.concat(articles);
-        }
-      }
-
-      let opinionArticles = [];
-
-      for (let site of sites) {
-        let hasOpinions = site.rss.find(feed => {
-          return feed.category === "opinion";
-        });
-        if (hasOpinions) {
-          let params = { siteName: site.name, category: "opinion" };
-          let articles = await Article.find(
-            params,
-            {},
-            { sort: { created_at: -1 } },
-            function(err, articles) {
-              return articles;
-            }
-          ).limit(10);
-
-          opinionArticles = opinionArticles.concat(articles);
-        }
-      }
-
-      let allArticles = [...politicsArticles, ...opinionArticles];
-
-      let combinedText = "";
-
-      for (let article of allArticles) {
-        combinedText = combinedText + " " + striptags(article.title.trim());
-        // " " +
-        // striptags(article.summary.trim());
-      }
-
-      let termsToSkip = [
-        "make",
-        "report",
-        "close",
-        "this",
-        "call",
-        "president"
-      ];
-
-      const frequencies = gramophone.extract(combinedText, {
-        score: true,
-        min: 5,
-        stem: false,
-        stopWords: termsToSkip
-      });
-
-      const topTags = frequencies.filter(tag => {
-        const termArray = tag.term.split(" ");
-        let tooShort = false;
-        if (termArray.length > 1) {
-          tooShort = termArray.find(term => {
-            return term.length < 2;
-          });
-        } else {
-          tooShort = tag.term.length < 4;
-        }
-
-        if (tooShort) {
-          return false;
-        } else if (termsToSkip.includes(tag.term.toLowerCase())) {
-          return false;
-        } else {
-          return tag.tf >= 5;
-        }
-      });
-
-      return { sites, politicsArticles, opinionArticles, topTags };
+      return await handleRequest(request);
     }
   },
 
@@ -147,39 +54,18 @@ module.exports = [
     method: "GET",
     path: "/recent_tags",
     handler: async function(request, h) {
-      const batches = await BatchOfTags.find(
-        {},
-        {},
-        { sort: { created_at: -1 } },
+      return await handleRequest(request);
+    }
+  },
 
-        function(err, batch) {
-          return batch;
-        }
-      ).limit(24 * 4);
-
-      let sorted = batches.sort((a, b) => {
-        if (moment(a.created_at).isAfter(moment(b.created_at))) {
-          return -1;
-        } else if (moment(b.created_at).isAfter(moment(a.created_at))) {
-          return 1;
-        } else {
-          return 0;
-        }
-      });
-
-      const topTags = batches[0].tags.sort((a, b) => {
-        let aCount = a ? ("sourceCount" in a ? a.sourceCount : 0) : 0;
-        let bCount = b ? ("sourceCount" in b ? b.sourceCount : 0) : 0;
-        if (aCount < bCount) {
-          return 1;
-        } else if (bCount < aCount) {
-          return -1;
-        } else {
-          return 0;
-        }
-      });
-
-      return { batches: sorted, topTags };
+  /*======================
+	* TODAY
+	* */
+  {
+    method: "GET",
+    path: "/recent_articles",
+    handler: async function(request, h) {
+      return await handleRequest(request);
     }
   },
 
@@ -269,21 +155,47 @@ module.exports = [
     method: "GET",
     path: `/chyrons/{hours}`,
     handler: async function(request, h) {
-      const data = chyrons(request.params.hours);
-      if (data) {
-        return data;
-      }
+      return await handleRequest(request, [request.params.hours]);
     }
   },
 
-  /*======================
-* Chyrons
-* */
   {
     method: "GET",
     path: `/top_news`,
     handler: async function(request, h) {
-      return await topNews();
+      return await handleRequest(request);
+    }
+  },
+
+  /*======================
+* New
+* */
+  {
+    method: "GET",
+    path: `/test/{a}/{b}`,
+    handler: async function(request, h) {
+      let { a, b } = request.params;
+      let { redis } = request.server.app;
+
+      try {
+        let test = await redis.get(`${a}_${b}`);
+        if (test) {
+          console.log("found!");
+          return test;
+        } else {
+          console.log("new");
+          redis.set(`${a}_${b}`, a + b, "EX", 60 * 15);
+          return a + b;
+        }
+
+        return h
+          .response({
+            test
+          })
+          .code(201);
+      } catch (e) {
+        return Boom.badImplementation(e);
+      }
     }
   }
 ];

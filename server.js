@@ -4,25 +4,45 @@ const Hapi = require("hapi");
 const db = require("./db").db;
 const routes = require("./routes");
 
-// Create a server with a host and port
-const server = Hapi.server({
-  port: ~~process.env.PORT || 8000,
-  routes: { cors: { origin: ["*"] } }
-});
+const getFrontPages = require("./lib/getFrontPages");
+const recentTags = require("./lib/recentTags");
+const topNews = require("./lib/topNews");
+const chyrons = require("./lib/chyrons");
 
-// Add the route
-server.route(routes);
+// Create a server with a host and port
+module.exports = async () => {
+  const server = Hapi.server({
+    port: ~~process.env.PORT || 8000,
+    routes: { cors: { origin: ["*"] } }
+  });
+
+  // Add the route
+  server.route(routes);
+  const cacheConfig = {
+    // expiresIn: 1000 * 60 * 15, // 15 minutes
+    expiresIn: 30 * 1000,
+    generateTimeout: 100
+  };
+
+  // server methods
+  server.method("getFrontPages", getFrontPages);
+  server.method("recentTags", recentTags);
+  server.method("topNews", topNews);
+  server.method("chyrons", chyrons);
+
+  return server;
+};
 
 // Start the server
-async function start() {
-  try {
-    await server.start();
-  } catch (err) {
-    console.log(err);
-    process.exit(1);
-  }
-
-  console.log("Server running at:", server.info.uri);
-}
-
-start();
+// async function start() {
+//   try {
+//     await server.start();
+//   } catch (err) {
+//     console.log(err);
+//     process.exit(1);
+//   }
+//
+//   console.log("Server running at:", server.info.uri);
+// }
+//
+// start();

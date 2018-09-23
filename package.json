@@ -27,6 +27,7 @@
     "shuffle-array": "^1.0.1",
     "simple-statistics": "^6.1.0",
     "striptags": "^3.1.1",
-    "tsvert": "0.0.4"
+    "tsvert": "0.0.4",
+    "url": "^0.11.0"
   }
 }

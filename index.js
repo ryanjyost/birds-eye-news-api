@@ -19,6 +19,8 @@ const start = async () => {
     no_ready_check: true
   });
 
+  redisClient.auth(process.env.REDIS_PASSWORD);
+
   // redisClient.lpushAsync = promisify(redisClient.lpush).bind(redisClient);
   // redisClient.lrangeAsync = promisify(redisClient.lrange).bind(redisClient);
   // redisClient.llenAsync = promisify(redisClient.llen).bind(redisClient);

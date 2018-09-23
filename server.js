@@ -8,6 +8,7 @@ const getFrontPages = require("./lib/getFrontPages");
 const recentTags = require("./lib/recentTags");
 const topNews = require("./lib/topNews");
 const chyrons = require("./lib/chyrons");
+const recentArticles = require("./lib/recentArticles");
 
 // Create a server with a host and port
 module.exports = async () => {
@@ -29,6 +30,7 @@ module.exports = async () => {
   server.method("recentTags", recentTags);
   server.method("topNews", topNews);
   server.method("chyrons", chyrons);
+  server.method("recentArticles", recentArticles);
 
   return server;
 };

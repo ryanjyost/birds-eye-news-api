@@ -20,14 +20,12 @@ const handleRequest = async (request, args) => {
   if (key.indexOf("/") > -1) {
     key = key.slice(0, key.indexOf("/"));
   }
-  console.log(key);
 
   try {
     let data = await redis.get(key);
     if (data) {
       return JSON.parse(data);
     } else {
-      console.log("MAKING NEW", key);
       data = await request.server.methods[camelCase(key)].apply(this, args);
       redis.set(key, JSON.stringify(data), "EX", 60 * 15);
       return data;
@@ -55,6 +53,17 @@ module.exports = [
   {
     method: "GET",
     path: "/recent_tags",
+    handler: async function(request, h) {
+      return await handleRequest(request);
+    }
+  },
+
+  /*======================
+	* TODAY
+	* */
+  {
+    method: "GET",
+    path: "/recent_articles",
     handler: async function(request, h) {
       return await handleRequest(request);
     }

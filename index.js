@@ -6,8 +6,9 @@ const start = async () => {
   const server = await createServer();
 
   const redisClient = redis.createClient({
-    host: process.env.REDIS_URL || "localhost",
-    port: 6379
+    host: process.env.REDISCLOUD_URL || "localhost",
+    port: 6379,
+    no_ready_check: true
   });
 
   // redisClient.lpushAsync = promisify(redisClient.lpush).bind(redisClient);

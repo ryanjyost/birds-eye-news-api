@@ -26,9 +26,12 @@ const handleRequest = async (request, args) => {
     if (data) {
       return JSON.parse(data);
     } else {
-      data = await request.server.methods[camelCase(key)].apply(this, args);
-      redis.set(key, JSON.stringify(data), "EX", 60 * 15);
-      return data;
+      let newData = await request.server.methods[camelCase(key)].apply(
+        this,
+        args
+      );
+      redis.set(key, JSON.stringify(newData), "EX", 60 * 15);
+      return newData;
     }
   } catch (e) {
     return Boom.badImplementation(e);
@@ -98,14 +101,15 @@ module.exports = [
     path: "/search_front_pages",
     handler: async function(request, h) {
       // BATCH
+      let days = 15;
       const batches = await Batch.find(
         {
           "records.1": { $exists: true },
           created_at: {
-            $gte: new Date(new Date().getTime() - 15 * 24 * 60 * 60 * 1000)
+            $gte: new Date(new Date().getTime() - days * 24 * 60 * 60 * 1000)
           }
         }, //make sure there's records in the batch
-        {},
+        { id: 1, completed_at: 1, created_at: 1 },
         { sort: { created_at: -1 } },
 
         function(err, batch) {

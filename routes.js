@@ -1,42 +1,35 @@
-const Record = require("./models/record.js");
 const Batch = require("./models/batch.js");
-const Round = require("./models/round.js");
 const Article = require("./models/article.js");
-const BatchOfTags = require("./models/batchOfTags.js");
 const sites = require("./sites.js");
 const _ = require("lodash");
-const striptags = require("striptags");
-const gramophone = require("gramophone");
-const nlp = require("compromise");
 const getSingleSource = require("./lib/getSingleSource");
-const chyrons = require("./lib/chyrons");
-const topNews = require("./lib/topNews");
 const Boom = require("boom");
 const camelCase = require("camelcase");
+const handleRequest = require("./lib/handleRequest");
 
-const handleRequest = async (request, args) => {
-  let { redis } = request.server.app;
-  let key = request.route.path.replace("/", "_");
-  if (key.indexOf("/") > -1) {
-    key = key.slice(0, key.indexOf("/"));
-  }
-
-  try {
-    let data = await redis.get(key);
-    if (data) {
-      return JSON.parse(data);
-    } else {
-      let newData = await request.server.methods[camelCase(key)].apply(
-        this,
-        args
-      );
-      redis.set(key, JSON.stringify(newData), "EX", 60 * 15);
-      return newData;
-    }
-  } catch (e) {
-    return Boom.badImplementation(e);
-  }
-};
+// const handleRequest = async (request, args) => {
+//   let { redis } = request.server.app;
+//   let key = request.route.path.replace("/", "_");
+//   if (key.indexOf("/") > -1) {
+//     key = key.slice(0, key.indexOf("/"));
+//   }
+//
+//   try {
+//     let data = await redis.get(key);
+//     if (data) {
+//       return JSON.parse(data);
+//     } else {
+//       let newData = await request.server.methods[camelCase(key)].apply(
+//         this,
+//         args
+//       );
+//       redis.set(key, JSON.stringify(newData), "EX", 60 * 15);
+//       return newData;
+//     }
+//   } catch (e) {
+//     return Boom.badImplementation(e);
+//   }
+// };
 
 module.exports = [
   /*======================
@@ -166,6 +159,14 @@ module.exports = [
   {
     method: "GET",
     path: `/top_news`,
+    handler: async function(request, h) {
+      return await handleRequest(request);
+    }
+  },
+
+  {
+    method: "GET",
+    path: `/trends`,
     handler: async function(request, h) {
       return await handleRequest(request);
     }

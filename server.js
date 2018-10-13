@@ -10,6 +10,9 @@ const topNews = require("./lib/topNews");
 const chyrons = require("./lib/chyrons");
 const recentArticles = require("./lib/recentArticles");
 const trends = require("./lib/trends");
+const trendTimelines = require("./lib/trendTimelines");
+const termAnalysis = require("./lib/termAnalysis");
+const termsForAnalysis = require("./lib/termsForAnalysis");
 
 // Create a server with a host and port
 module.exports = async () => {
@@ -33,6 +36,9 @@ module.exports = async () => {
   server.method("chyrons", chyrons);
   server.method("recentArticles", recentArticles);
   server.method("trends", trends);
+  server.method("trendTimelines", trendTimelines);
+  server.method("termAnalysis", termAnalysis);
+  server.method("termsForAnalysis", termsForAnalysis);
 
   return server;
 };

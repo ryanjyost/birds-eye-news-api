@@ -172,6 +172,33 @@ module.exports = [
     }
   },
 
+  {
+    method: "GET",
+    path: `/trend_timelines`,
+    handler: async function(request, h) {
+      return await handleRequest(request);
+    }
+  },
+
+  {
+    method: "GET",
+    path: `/terms_for_analysis`,
+    handler: async function(request, h) {
+      return await handleRequest(request);
+    }
+  },
+
+  /*======================
+	* GET_FRONT_PAGES
+	* */
+  {
+    method: "POST",
+    path: "/term_analysis",
+    handler: async function(request, h) {
+      return await handleRequest(request, [request.payload.term]);
+    }
+  },
+
   /*======================
 * New
 * */
@@ -185,10 +212,8 @@ module.exports = [
       try {
         let test = await redis.get(`${a}_${b}`);
         if (test) {
-          console.log("found!");
           return test;
         } else {
-          console.log("new");
           redis.set(`${a}_${b}`, a + b, "EX", 60 * 15);
           return a + b;
         }

@@ -30,4 +30,6 @@ const articleSchema = new mongoose.Schema({
   source: mongoose.Schema.Types.Mixed
 });
 
+articleSchema.index({ title: "text", summary: "text", description: "text" });
+
 module.exports = mongoose.model("article", articleSchema);

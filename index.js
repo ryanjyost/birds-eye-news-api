@@ -4,6 +4,7 @@ const redis = require("redis");
 const url = require("url");
 const cron = require("node-cron");
 const hydrateCache = require("./lib/hydrateCache");
+require("dotenv").config();
 
 const start = async () => {
   const server = await createServer();

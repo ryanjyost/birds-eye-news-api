@@ -231,35 +231,5 @@ module.exports = [
     handler: async function(request, h) {
       return await feedback.getFeedbackByUser(request.params.user);
     }
-  },
-
-  /*======================
-* New
-* */
-  {
-    method: "GET",
-    path: `/test/{a}/{b}`,
-    handler: async function(request, h) {
-      let { a, b } = request.params;
-      let { redis } = request.server.app;
-
-      try {
-        let test = await redis.get(`${a}_${b}`);
-        if (test) {
-          return test;
-        } else {
-          redis.set(`${a}_${b}`, a + b, "EX", 60 * 15);
-          return a + b;
-        }
-
-        return h
-          .response({
-            test
-          })
-          .code(201);
-      } catch (e) {
-        return Boom.badImplementation(e);
-      }
-    }
   }
 ];

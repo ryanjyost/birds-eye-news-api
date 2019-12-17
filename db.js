@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var URL = 'mongodb://skoosh:skoosh2016@ds157499.mlab.com:57499/media-bias-map';
+var URL = process.env.DB_URL;
 
 mongoose.connect(URL);
 const db = mongoose.connection;
